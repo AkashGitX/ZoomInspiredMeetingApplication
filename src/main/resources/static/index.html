@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — ZoomMeet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="dash-header">
+            <div class="title-block">
+                <h1>Meeting dashboard</h1>
+                <p>Start or join a video call. Your presence is shown to other members.</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                <div class="user-chip" id="userChip">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span id="chipLabel">…</span>
+                </div>
+                <button type="button" class="btn-ghost" id="logoutBtn">Sign out</button>
+            </div>
+        </header>
+
+        <div class="dash-grid">
+            <div class="panel">
+                <h2>Meeting actions</h2>
+                <p class="hint">Launch a new room or join with a shared meeting ID.</p>
+                <div class="actions-stack">
+                    <button type="button" class="btn-large btn-meet" id="newMeetingBtn">Start instant meeting</button>
+                    <div>
+                        <p class="hint" style="margin-bottom:10px;">Join with ID</p>
+                        <div class="join-row">
+                            <input type="text" id="meetingName" placeholder="Meeting ID" autocomplete="off" aria-label="Meeting ID">
+                            <button type="button" class="btn-join" id="joinMeetingBtn">Join</button>
+                        </div>
+                        <p id="joinError" class="inline-error" role="alert"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <h2>People</h2>
+                <p class="hint">Registered accounts and online status.</p>
+                <ul class="user-list" id="userList">
+                    <li class="loading-text">Loading…</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

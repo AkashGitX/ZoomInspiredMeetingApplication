@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting — ZoomMeet</title>
+    <style>
+        #root { width: 100vw; height: 100vh; margin: 0; }
+        body { margin: 0; }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
+<script>
+    window.onload = function () {
+        function getUrlParams(url) {
+            var urlStr = url.split('?')[1];
+            if (!urlStr) {
+                return {};
+            }
+            var urlSearchParams = new URLSearchParams(urlStr);
+            return Object.fromEntries(urlSearchParams.entries());
+        }
+
+        var params = getUrlParams(window.location.href);
+        var roomID = params['roomID'] || (Math.floor(Math.random() * 10000) + '');
+        var userID = Math.floor(Math.random() * 10000) + '';
+        var userName = params['username'] || ('userName' + userID);
+
+        var appID = 719832181;
+        var serverSecret = 'd6d1c1f93ffb298e84ee6ace8f0d86b2';
+
+        var kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+            appID,
+            serverSecret,
+            roomID,
+            userID,
+            userName
+        );
+
+        var zp = ZegoUIKitPrebuilt.create(kitToken);
+
+        zp.joinRoom({
+            container: document.querySelector('#root'),
+            sharedLinks: [{
+                name: 'Personal link',
+                url: window.location.protocol + '//' +
+                    window.location.host +
+                    window.location.pathname +
+                    '?roomID=' + roomID
+            }],
+            scenario: {
+                mode: ZegoUIKitPrebuilt.VideoConference
+            },
+            turnOnMicrophoneWhenJoining: false,
+            turnOnCameraWhenJoining: false,
+            showMyCameraToggleButton: true,
+            showMyMicrophoneToggleButton: true,
+            showAudioVideoSettingsButton: true,
+            showScreenSharingButton: true,
+            showTextChat: true,
+            showUserList: true,
+            maxUsers: 2,
+            layout: 'Auto',
+            showLayoutButton: false
+        });
+    };
+</script>
+</body>
+</html>

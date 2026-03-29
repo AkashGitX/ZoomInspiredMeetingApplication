@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account — ZoomMeet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-shell">
+        <div class="auth-brand">
+            <div class="logo" aria-hidden="true">+</div>
+            <h1>Create account</h1>
+            <p>Choose a username, email, and a strong password (8+ characters)</p>
+        </div>
+        <div class="glass-card">
+            <form id="registrationForm" novalidate>
+                <div class="form-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Display name" required minlength="2" maxlength="64" autocomplete="username">
+                </div>
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="At least 8 characters" required minlength="8" maxlength="72" autocomplete="new-password">
+                </div>
+                <p id="registerError" class="form-error" role="alert"></p>
+                <button type="submit" class="btn-primary">Create account</button>
+            </form>
+        </div>
+        <p class="auth-footer">Already have an account? <a href="login.html">Sign in</a></p>
+    </div>
+    <script src="js/register.js"></script>
+</body>
+</html>
